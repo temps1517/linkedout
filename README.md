@@ -31,6 +31,12 @@ All demo accounts use password `Password123!`.
 
 Seeded data includes profiles, skills, accepted and pending connections, messages, posts, a training programme with a cohort and graded submission, a company, an opportunity, an application, and notifications.
 
+## GitHub sign-in
+
+GitHub OAuth is optional. Create a GitHub OAuth App with homepage `http://localhost:3000` and callback URL `http://localhost:3000/api/auth/github/callback`, then set `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` in `.env` and restart the server. The callback URL must match `APP_URL`.
+
+The "Continue with GitHub" button appears on the sign-in and registration pages. A GitHub identity is linked to an existing LinkedOut account when its verified GitHub email matches; otherwise a new student account is created with an unusable random password.
+
 ## Scripts
 
 | Command | Purpose |
@@ -78,7 +84,8 @@ Copy `.env.example` to `.env` before running the app.
 | --- | --- |
 | `DATABASE_URL` | Local default is `file:./dev.db`. Switch to a managed Postgres URL for deployment. |
 | `SESSION_SECRET` | Replace with a strong random value outside development. |
-| `APP_URL` | Used to build absolute email links. |
+| `APP_URL` | Used to build absolute email links and the GitHub OAuth callback URL. |
+| `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` | Enable "Continue with GitHub"; leave empty to hide the working provider. |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `SMTP_FROM` | Configure for real email delivery. |
 
 ## Production handover

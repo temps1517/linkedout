@@ -12,6 +12,7 @@ model User {
   email               String          @unique
   name                String
   passwordHash        String
+  githubId            String?         @unique
   role                String          @default("STUDENT")
   emailVerifiedAt     DateTime?
   createdAt           DateTime        @default(now())
